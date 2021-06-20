@@ -15,6 +15,8 @@ class SearchBar extends Component{
     this.props.search(x.target.value)
   }
 
+
+
   render(){
     return(
       <div>
