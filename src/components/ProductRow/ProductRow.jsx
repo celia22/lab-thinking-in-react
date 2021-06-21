@@ -11,15 +11,11 @@ const ProductRow = (props) =>{
   console.log("row", stocked)
  
    return(      
-        <table> 
-        <tbody>            
-          <tr>
-            <td className="item_container">{name}</td>
-            <td className="item_container">{price}</td>
-          </tr>   
-        </tbody>      
-       </table>
-     
+    <div>
+       <p className="item_container">{name}</p>
+       <p className="item_container">{price}</p>
+    </div>        
+
     )  
   }
 

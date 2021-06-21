@@ -54,46 +54,35 @@ class FilterableProductTable extends Component{
       < SearchBar search={this.searchProductQuery} check={this.handleStock}/> 
 
       {checkbox ? (
-          <div className="table_container_stock">       
-          <table  >
-          <thead>
-             <tr>
-               <th>Name</th>
-               <th>Price</th>
-             </tr>
-             </thead>  
+          <div className="table_container">  
+            <div className="table_container_title">
+              <h3>Name</h3>
+              <h3>Price</h3>
+            </div>          
              {inStock.map((item, index) => { 
                return(
-                 <tbody key={index}>
-               <tr >
-                 < ProductRow name={item.name} price={item.price} stocked={item.stocked}/>
-               </tr> 
-               </tbody>  
+                 <div className="table_items" key={index}>               
+                    < ProductRow name={item.name}  stocked={item.stocked}/>
+                    < ProductRow  price={item.price} stocked={item.stocked}/>
+                </div>
                )              
              })}                     
-           </table>
         </div>
       ) : (
-        <div className="table_container_all">
-       
-       <table  >
-       <thead>
-          <tr>
-            <th>Name</th>
-            <th>Price</th>
-          </tr>
-          </thead>  
-          {searchArray.map((item, index) => { 
-            return(
-              <tbody key={index}>
-            <tr >
-              < ProductRow name={item.name} price={item.price} stocked={item.stocked}/>
-            </tr> 
-            </tbody>  
-            )              
-          })}                     
-        </table>
-     </div>
+        <div className="table_container">  
+            <div className="table_container_title">
+              <h3>Name</h3>
+              <h3>Price</h3>
+            </div>          
+             {searchArray.map((item, index) => { 
+               return(
+                 <div className="table_items" key={index}>               
+                    < ProductRow name={item.name}  stocked={item.stocked}/>
+                    < ProductRow  price={item.price} stocked={item.stocked}/>
+                </div>
+               )              
+             })}                     
+        </div>
       )} 
    
      </>

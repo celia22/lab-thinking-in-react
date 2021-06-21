@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import "./SearchBar.css"
+
 class SearchBar extends Component{
 
   constructor(props) {
@@ -25,11 +27,11 @@ class SearchBar extends Component{
   render(){
     
     return(
-      <div>
-        <h4>Search</h4>
-        <input type="text" label="text" name="value"  value={this.state.query} onChange={this.handleChange}/>
-        <div>
-          <input type="checkbox" label="checkbox"  onChange={this.handleState}/> <p>Only show products on stock</p>
+      <div className="searchbar_container">
+            <input className="searchbar" type="text" label="text" name="value" placeholder="Search your products" value={this.state.query} onChange={this.handleChange}/>
+        <div className="checkbox_container">
+          <input type="checkbox" label="checkbox"  onChange={this.handleState}/> 
+          <p>Only show products on stock</p>           
         </div>
       </div>
     )
