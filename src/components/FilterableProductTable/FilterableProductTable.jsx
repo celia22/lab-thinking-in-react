@@ -53,9 +53,8 @@ class FilterableProductTable extends Component{
       <>
       < SearchBar search={this.searchProductQuery} check={this.handleStock}/> 
 
-      {!checkbox ? (
-          <div className="table_container_stock">
-       
+      {checkbox ? (
+          <div className="table_container_stock">       
           <table  >
           <thead>
              <tr>
@@ -63,7 +62,7 @@ class FilterableProductTable extends Component{
                <th>Price</th>
              </tr>
              </thead>  
-             {searchArray.map((item, index) => {
+             {inStock.map((item, index) => { 
                return(
                  <tbody key={index}>
                <tr >
@@ -84,7 +83,7 @@ class FilterableProductTable extends Component{
             <th>Price</th>
           </tr>
           </thead>  
-          {inStock.map((item, index) => { 
+          {searchArray.map((item, index) => { 
             return(
               <tbody key={index}>
             <tr >
