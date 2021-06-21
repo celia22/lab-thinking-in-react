@@ -11,7 +11,7 @@ const ProductRow = (props) =>{
  
    return(      
         <table> 
-        <tbody style={{color: stocked ? 'red' : 'none' }}>            
+        <tbody style={{color: stocked ?  'none' : 'red' }}>            
           <tr>
             <td className="item_container">{name}</td>
             <td className="item_container">{price}</td>

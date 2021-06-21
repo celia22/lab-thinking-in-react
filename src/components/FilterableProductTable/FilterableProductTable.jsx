@@ -11,6 +11,9 @@ class FilterableProductTable extends Component{
     this.state = {
       products: this.props.products,
       searchArray: this.props.products,
+      inStock: [],
+      checkbox: false,
+      
     }
   }
 
@@ -26,14 +29,53 @@ class FilterableProductTable extends Component{
     });
   };
 
+  handleStock = (event) => {
+    const { products } = this.state;
+    const inStockArray = []
+    products.map((item) => {
+      if (item.stocked) {
+        inStockArray.push(item)
+      }
+    })  
+
+      return this.setState({
+      inStock: inStockArray,
+      checkbox: event,
+    })  
+  }
+
   render(){
-    const { products, searchArray } = this.state
-    console.log("table", this.state.searchArray)
+    const {  searchArray, inStock, checkbox } = this.state
+    console.log(this.state.checkbox)
+    console.log("stock", inStock)
+    
     return(
       <>
-      < SearchBar search={this.searchProductQuery}/> 
+      < SearchBar search={this.searchProductQuery} check={this.handleStock}/> 
 
-     <div className="table_container">
+      {!checkbox ? (
+          <div className="table_container_stock">
+       
+          <table  >
+          <thead>
+             <tr>
+               <th>Name</th>
+               <th>Price</th>
+             </tr>
+             </thead>  
+             {searchArray.map((item, index) => {
+               return(
+                 <tbody key={index}>
+               <tr >
+                 < ProductRow name={item.name} price={item.price} stocked={item.stocked}/>
+               </tr> 
+               </tbody>  
+               )              
+             })}                     
+           </table>
+        </div>
+      ) : (
+        <div className="table_container_all">
        
        <table  >
        <thead>
@@ -42,7 +84,7 @@ class FilterableProductTable extends Component{
             <th>Price</th>
           </tr>
           </thead>  
-          {searchArray.map((item, index) => {
+          {inStock.map((item, index) => { 
             return(
               <tbody key={index}>
             <tr >
@@ -53,6 +95,8 @@ class FilterableProductTable extends Component{
           })}                     
         </table>
      </div>
+      )} 
+   
      </>
     )
   }
